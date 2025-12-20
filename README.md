@@ -179,13 +179,6 @@ https://mixxx.org
 
 ---
 
-## Demo
-
-🎥 Video demonstration:  
-https://youtu.be/EEeUhQ8b_II
-
----
-
 ## Author
 
 Ivana Rasch Chinchilla  
