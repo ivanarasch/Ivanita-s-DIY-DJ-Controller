@@ -7,9 +7,6 @@ This project was developed initially as part of a music technology course and la
 🎥 Video demo:  
 https://youtu.be/EEeUhQ8b_II
 
-🔗 Repository:  
-https://github.com/ivanarasch/Ivanita-s-DIY-DJ-Controller
-
 ---
 
 ## Overview
