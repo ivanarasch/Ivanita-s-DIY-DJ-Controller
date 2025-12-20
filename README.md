@@ -7,7 +7,7 @@ This project was developed initially as part of a music technology course and la
 🎥 Video demo:  
 https://youtu.be/EEeUhQ8b_II
 
-<img src="media/controller_full.jpg" width="600">
+<img src="Media/FinalProduct.jpg" width="600">
 
 
 
