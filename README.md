@@ -1,37 +1,115 @@
-# Ivanita-s-DIY-DJ-Controller
+# DIY DJ Controller
 
-DIY DJ Controller — Sensor-Based Expressive Interface
-This repository documents the design and implementation of a DIY DJ controller built from scratch, combining custom hardware, sensor-based interaction, and open-source DJ software. The project explores alternative approaches to DJ controller design that prioritize expressive physical interaction, creative authorship, and hands-on making over closed, commercial systems.
-Overview
-The controller features a symmetrical two-deck layout and interfaces with Mixxx via MIDI. Instead of traditional rotary encoders and faders, the system uses magnetic angle sensing, time-of-flight distance sensing, and touch-based control to support more fluid and gestural performance techniques.
-The controller was initially developed as part of a music technology course and later expanded into a master’s thesis, investigating DIY instrument design, physical interaction, ethical AI use, and authorship in digital DJ performance.
-As Leah Buechley has argued, “the experience of making things by hand is an important part of being human.”
-This philosophy directly informs the design and construction of this instrument.
-Hardware Features
-Dual-deck, fully symmetrical controller layout
-AS5600 magnetic angle sensors for smooth, continuous rotary encoder behavior (jog wheels)
-VL53L0X time-of-flight sensors for contactless tempo and parameter control
-Trill Touch Bar used as a crossfader
-Teensy-based embedded system
-Custom PCB design
-Laser-cut enclosure made from recycled plastic
-3D-printed components for mechanical integration
-Software
-DJ Software: Mixxx
-Communication: MIDI
-Custom firmware maps sensor data to MIDI CCs and notes for real-time performance control
-Research Context
-This project treats the DJ controller as a research artifact, using practice-based research to explore:
-Expressive interaction in digital DJ performance
-DIY hardware as a form of creative and technical authorship
-Alternatives to proprietary music technology ecosystems
-The relationship between physical gesture and musical control
-Repository Structure
-/firmware        → Teensy / microcontroller code  
-/hardware        → Schematics, PCB designs, and enclosure files  
-/mappings        → Mixxx MIDI mappings  
-/media           → Photos and demo materials  
-/docs            → Additional documentation
-Demo
-🎥 Video demo:
-[YouTube link here]
+A custom-built DIY DJ controller combining sensor-based hardware, embedded systems, and open-source DJ software to explore expressive and physical approaches to digital DJ performance.
+
+This project was developed initially as part of a music technology course and later expanded into a master’s thesis, focusing on hands-on instrument design, physical interaction, ethical AI use, and creative authorship.
+
+🎥 Video demo:  
+https://youtu.be/EEeUhQ8b_II
+
+🔗 Repository:  
+https://github.com/ivanarasch/Ivanita-s-DIY-DJ-Controller
+
+---
+
+## Overview
+
+This repository documents the design and implementation of a two-deck DJ controller built from scratch. The system uses magnetic angle, distance, and touch sensors to translate physical gestures into musical control. The controller is designed as an alternative to closed, commercial DJ gear, emphasizing expressivity, transparency, and user agency.
+
+---
+
+## Project Goals
+
+- Design a fully functional DJ controller using custom hardware  
+- Explore sensor-based interaction beyond traditional knobs and faders  
+- Map physical gesture to meaningful musical control  
+- Use open-source software and tools where possible  
+
+---
+
+## Repository Structure
+
+arduino/
+└── Arduino / Teensy firmware
+
+mixxx/
+├── .xml MIDI mapping files
+└── .js controller scripts
+
+hardware/
+├── PCB designs
+└── custom hardware documentation
+
+media/
+└── photos of PCB and controller
+
+---
+
+## System Overview
+
+The controller uses a fully symmetrical two-deck layout. All controls on Deck 1 are mirrored on Deck 2, with the exception of a shared crossfader.
+
+### Hardware
+
+- Teensy microcontroller  
+- 2 × AS5600 magnetic angle sensors (jog wheels)  
+- 2 × VL53L0X time-of-flight sensors (tempo control)  
+- 1 × Trill Touch Bar (crossfader)  
+- 20 buttons  
+- 12 knobs  
+- 2 sliders  
+- Custom PCB  
+- Laser-cut enclosure made from recycled PLA  
+- 3D-printed platters with embedded magnets and Lazy Susan bearings  
+
+### Software
+
+- Mixxx (open-source DJ software)  
+- Custom Arduino firmware  
+- Custom Mixxx MIDI mappings using `.xml` and `.js` files  
+
+---
+
+## Controls & Interaction
+
+### Jog Wheels
+Magnetic angle sensors provide smooth rotary encoder behavior for track nudging and scratching.
+
+### Tempo Control
+Time-of-flight sensors adjust tempo based on hand distance above the sensor.
+
+### Channel Controls
+- Slider: Channel volume  
+- Knob 1: High EQ  
+- Knob 2: Mid EQ  
+- Knob 3: Low EQ  
+
+### Effects
+Three knobs per deck control effects. Effect types are configurable in software.
+
+### Performance & Transport
+Buttons handle hot cues, looping, beat sync, and play/pause.
+
+### Crossfader
+A Trill Touch Bar acts as a shared crossfader between both decks.
+
+---
+
+## Build Notes & Lessons Learned
+
+Several practical challenges emerged during development. Analog noise from potentiometers caused unstable MIDI output and was resolved through firmware-level smoothing. Jog wheels required manual editing of Mixxx `.xml` and `.js` files to achieve proper scratching behavior, as this cannot be handled by the Learning Wizard alone. PCB footprint errors led to last-minute wiring fixes, reinforcing the importance of careful verification before fabrication. Working with multiple I2C devices required careful bus management, and enclosure fabrication using recycled PLA required additional material-specific testing.
+
+---
+
+## Demo
+
+🎥 Video demonstration:  
+https://youtu.be/EEeUhQ8b_II
+
+---
+
+## Author
+
+Ivana Rasch Chinchilla  
+Music Technology, NYU  
+DIY instruments · embedded systems · DJ technology · creative coding
