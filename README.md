@@ -88,13 +88,6 @@ Several practical challenges emerged during development. Analog noise from poten
 
 ---
 
-## Demo
-
-🎥 Video demonstration:  
-https://youtu.be/EEeUhQ8b_II
-
----
-
 ## Author
 
 Ivana Rasch Chinchilla  
