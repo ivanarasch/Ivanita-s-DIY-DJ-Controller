@@ -47,7 +47,13 @@ This repository documents the design and implementation of a two-deck DJ control
 - 2 sliders  
 - Custom PCB  
 - Laser-cut enclosure made from recycled PLA  
-- 3D-printed DJ platters mounted on **Lazy Susan bearing hardware**  
+- 3D-printed DJ platters mounted on **Lazy Susan bearing hardware**
+
+<p align="center">
+  <img src="Media/Schematic.png" width="600">
+  <br>
+  <em>Controller schematic.</em>
+</p>
 
 <p align="center">
   <img src="Media/PCB.jpg" width="600">
@@ -56,9 +62,9 @@ This repository documents the design and implementation of a two-deck DJ control
 </p>
 
 <p align="center">
-  <img src="Media/Schematic.png" width="600">
+  <img src="Media/PCBSoftware.png" width="600">
   <br>
-  <em>Controller schematic.</em>
+  <em>KiCad PCB layout view showing component placement and routing.</em>
 </p>
 
 ---
@@ -70,12 +76,6 @@ This repository documents the design and implementation of a two-deck DJ control
 - Mixxx MIDI mappings:
   - `.xml` files generated and refined using the Mixxx Learning Wizard  
   - `.js` scripts manually edited for jog wheel and scratching behavior  
-
-<p align="center">
-  <img src="Media/PCBSoftware.png" width="600">
-  <br>
-  <em>Mixxx interface showing custom controller mapping and integration.</em>
-</p>
 
 ---
 
