@@ -7,6 +7,9 @@ This project was developed initially as part of a music technology course and la
 🎥 Video demo:  
 https://youtu.be/EEeUhQ8b_II
 
+![DIY DJ Controller – Full Assembly](Media/FinalProduct.jpg)
+
+
 ---
 
 ## Overview
