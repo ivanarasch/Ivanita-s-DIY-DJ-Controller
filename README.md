@@ -34,7 +34,7 @@ This repository documents the design and implementation of a two-deck DJ control
 
 ## System Overview
 
-The controller uses a fully symmetrical two-deck layout. All controls on Deck 1 are mirrored on Deck 2, with the exception of a shared crossfader.
+The controller uses a fully symmetrical two-deck layout. All controls on Deck 1 are mirrored on Deck 2, with the exception of a shared crossfader. Controls are described below for a single deck; the same behavior applies to the other deck.
 
 ### Hardware
 
@@ -43,53 +43,87 @@ The controller uses a fully symmetrical two-deck layout. All controls on Deck 1 
 - 2 × VL53L0X time-of-flight sensors (tempo control)  
 - 1 × Trill Touch Bar (crossfader)  
 - 20 buttons  
-- 12 knobs  
+- 12 knobs (6 per deck)  
 - 2 sliders  
 - Custom PCB  
 - Laser-cut enclosure made from recycled PLA  
-- 3D-printed platters with embedded magnets and Lazy Susan bearings  
+- 3D-printed DJ platters with embedded magnets and Lazy Susan bearings  
 
 ### Software
 
 - Mixxx (open-source DJ software)  
 - Custom Arduino firmware  
-- Custom Mixxx MIDI mappings using `.xml` and `.js` files  
+- Mixxx MIDI mappings:
+  - `.xml` files generated and refined using the Mixxx Learning Wizard  
+  - `.js` scripts manually edited for jog wheel and scratching behavior  
 
 ---
 
 ## Controls & Interaction
 
+Most controls were mapped using **Mixxx’s Learning Wizard**, which allows direct assignment of buttons, knobs, and sliders to software parameters. Jog wheels required additional manual configuration through Mixxx’s XML and JavaScript mapping system.
+
 ### Jog Wheels
-Magnetic angle sensors provide smooth rotary encoder behavior for track nudging and scratching.
+- **AS5600 magnetic angle sensors**
+- Control track nudging and scratching
+- Require manual editing of Mixxx `.xml` and `.js` files for proper behavior
 
 ### Tempo Control
-Time-of-flight sensors adjust tempo based on hand distance above the sensor.
+- **VL53L0X time-of-flight sensor**
+- Tempo is controlled by hand distance above the sensor
+- Moving the hand closer or farther increases or decreases tempo
 
-### Channel Controls
-- Slider: Channel volume  
-- Knob 1: High EQ  
-- Knob 2: Mid EQ  
-- Knob 3: Low EQ  
+### Channel Volume
+- **Slider**
+- Controls channel volume for the deck
 
-### Effects
-Three knobs per deck control effects. Effect types are configurable in software.
+### Equalization (3 Knobs per Deck)
+- **Knob 1** → High EQ  
+- **Knob 2** → Mid EQ  
+- **Knob 3** → Low EQ  
 
-### Performance & Transport
-Buttons handle hot cues, looping, beat sync, and play/pause.
+### Effects (3 Knobs per Deck)
+- **Knob 4** → FX 1  
+- **Knob 5** → FX 2  
+- **Knob 6** → FX 3  
+Effect types are configurable in Mixxx and can be reassigned without changing hardware.
+
+### Performance Controls
+- **Buttons 1–4** → Hot Cues 1–4  
+
+### Looping Controls
+- **Button 5** → Loop In  
+- **Button 6** → Loop Out  
+- **Button 7** → Reloop  
+- **Button 8** → Exit Loop  
+
+### Transport Controls
+- **Button 9** → Beat Sync  
+- **Button 10** → Play / Pause  
 
 ### Crossfader
-A Trill Touch Bar acts as a shared crossfader between both decks.
+- **Trill Touch Bar**
+- Shared across both decks
+- Blends audio between Deck 1 and Deck 2
 
 ---
 
 ## Build Notes & Lessons Learned
 
-Several practical challenges emerged during development. Analog noise from potentiometers caused unstable MIDI output and was resolved through firmware-level smoothing. Jog wheels required manual editing of Mixxx `.xml` and `.js` files to achieve proper scratching behavior, as this cannot be handled by the Learning Wizard alone. PCB footprint errors led to last-minute wiring fixes, reinforcing the importance of careful verification before fabrication. Working with multiple I2C devices required careful bus management, and enclosure fabrication using recycled PLA required additional material-specific testing.
+Several practical challenges emerged during development:
+
+- **Noisy potentiometers** caused unstable MIDI output and were resolved using the `ResponsiveAnalogRead` library.
+- **Jog wheels** could not be fully configured using Mixxx’s Learning Wizard and required manual editing of `.xml` and `.js` files.
+- **PCB footprint errors** required last-minute manual wiring fixes.
+- **Multiple I2C devices** required careful bus management; the Trill Touch Bar library only supports the default I2C bus.
+- **Laser cutting recycled PLA** required extensive testing due to material thickness and behavior.
+- **Jog wheel noise** was caused by incorrect vertical magnet distance rather than radial placement.
 
 ---
+
 ## References & Documentation
 
-Mixxx MIDI scripting documentation (jog wheels and scratching):  
+Mixxx MIDI scripting (jog wheels and scratching):  
 https://github.com/mixxxdj/mixxx/wiki/midi%20scripting#Scratching-and-jog-wheels
 
 Laser cutting PLA reference paper:  
@@ -100,6 +134,13 @@ https://all3dp.com/2/pla-welding-how-to-fuse-pla-seams-and-cracks/
 
 Mixxx DJ software:  
 https://mixxx.org
+
+---
+
+## Demo
+
+🎥 Video demonstration:  
+https://youtu.be/EEeUhQ8b_II
 
 ---
 
