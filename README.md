@@ -56,7 +56,7 @@ This repository documents the design and implementation of a two-deck DJ control
 </p>
 
 <p align="center">
-  <img src="Media/Shematic.png" width="600">
+  <img src="Media/Schematic.png" width="600">
   <br>
   <em>Controller schematic.</em>
 </p>
