@@ -31,7 +31,6 @@ This repository documents the design and implementation of a two-deck DJ control
 
 arduino/
 └── Arduino / Teensy firmware
-
 mixxx/
 ├── .xml MIDI mapping files
 └── .js controller scripts
@@ -42,8 +41,6 @@ hardware/
 
 media/
 └── photos of PCB and controller
-
----
 
 ## System Overview
 
