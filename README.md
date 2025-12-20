@@ -87,6 +87,21 @@ A Trill Touch Bar acts as a shared crossfader between both decks.
 Several practical challenges emerged during development. Analog noise from potentiometers caused unstable MIDI output and was resolved through firmware-level smoothing. Jog wheels required manual editing of Mixxx `.xml` and `.js` files to achieve proper scratching behavior, as this cannot be handled by the Learning Wizard alone. PCB footprint errors led to last-minute wiring fixes, reinforcing the importance of careful verification before fabrication. Working with multiple I2C devices required careful bus management, and enclosure fabrication using recycled PLA required additional material-specific testing.
 
 ---
+## References & Documentation
+
+Mixxx MIDI scripting documentation (jog wheels and scratching):  
+https://github.com/mixxxdj/mixxx/wiki/midi%20scripting#Scratching-and-jog-wheels
+
+Laser cutting PLA reference paper:  
+https://isam2022.hemi-makers.org/wp-content/uploads/sites/3/2022/10/117..pdf
+
+PLA welding technique:  
+https://all3dp.com/2/pla-welding-how-to-fuse-pla-seams-and-cracks/
+
+Mixxx DJ software:  
+https://mixxx.org
+
+---
 
 ## Author
 
