@@ -36,11 +36,7 @@ This repository documents the design and implementation of a two-deck DJ control
 - `media/` — Photos of the controller and components  
 
 
-## System Overview
-
-The controller uses a fully symmetrical two-deck layout. All controls on Deck 1 are mirrored on Deck 2, with the exception of a shared crossfader. Controls are described below for a single deck; the same behavior applies to the other deck.
-
-### Hardware
+## Hardware
 
 - Teensy microcontroller  
 - 2 × AS5600 magnetic angle sensors (jog wheels)  
@@ -51,15 +47,35 @@ The controller uses a fully symmetrical two-deck layout. All controls on Deck 1 
 - 2 sliders  
 - Custom PCB  
 - Laser-cut enclosure made from recycled PLA  
-- 3D-printed DJ platters with embedded magnets and Lazy Susan bearings  
+- 3D-printed DJ platters mounted on **Lazy Susan bearing hardware**  
 
-### Software
+<p align="center">
+  <img src="Media/PCB.jpg" width="600">
+  <br>
+  <em>Custom PCB used for sensor and control integration.</em>
+</p>
+
+<p align="center">
+  <img src="Media/Shematic.png" width="600">
+  <br>
+  <em>Controller schematic.</em>
+</p>
+
+---
+
+## Software
 
 - Mixxx (open-source DJ software)  
 - Custom Arduino firmware  
 - Mixxx MIDI mappings:
   - `.xml` files generated and refined using the Mixxx Learning Wizard  
   - `.js` scripts manually edited for jog wheel and scratching behavior  
+
+<p align="center">
+  <img src="Media/PCBSoftware.png" width="600">
+  <br>
+  <em>Mixxx interface showing custom controller mapping and integration.</em>
+</p>
 
 ---
 
@@ -68,47 +84,61 @@ The controller uses a fully symmetrical two-deck layout. All controls on Deck 1 
 Most controls were mapped using **Mixxx’s Learning Wizard**, which allows direct assignment of buttons, knobs, and sliders to software parameters. Jog wheels required additional manual configuration through Mixxx’s XML and JavaScript mapping system.
 
 ### Jog Wheels
-- **AS5600 magnetic angle sensors**
-- Control track nudging and scratching
-- Require manual editing of Mixxx `.xml` and `.js` files for proper behavior
+
+- AS5600 magnetic angle sensors control the DJ platters  
+- Enable track nudging and scratching behavior  
+- Each 3D-printed DJ platter is **glued to Lazy Susan bearing hardware**, allowing smooth mechanical rotation above the sensor  
+
+<p align="center">
+  <img src="Media/djPlatter.png" width="400">
+  <br>
+  <em>3D-printed DJ platter with embedded magnet mounted on Lazy Susan hardware.</em>
+</p>
 
 ### Tempo Control
-- **VL53L0X time-of-flight sensor**
-- Tempo is controlled by hand distance above the sensor
-- Moving the hand closer or farther increases or decreases tempo
+
+- VL53L0X time-of-flight sensors  
+- Tempo is controlled by hand distance above the sensor  
 
 ### Channel Volume
-- **Slider**
-- Controls channel volume for the deck
+
+- Slider controls channel volume for each deck  
 
 ### Equalization (3 Knobs per Deck)
-- **Knob 1** → High EQ  
-- **Knob 2** → Mid EQ  
-- **Knob 3** → Low EQ  
+
+- Knob 1 → High EQ  
+- Knob 2 → Mid EQ  
+- Knob 3 → Low EQ  
 
 ### Effects (3 Knobs per Deck)
-- **Knob 4** → FX 1  
-- **Knob 5** → FX 2  
-- **Knob 6** → FX 3  
+
+- Knob 4 → FX 1  
+- Knob 5 → FX 2  
+- Knob 6 → FX 3  
+
 Effect types are configurable in Mixxx and can be reassigned without changing hardware.
 
 ### Performance Controls
-- **Buttons 1–4** → Hot Cues 1–4  
+
+- Buttons 1–4 → Hot Cues  
 
 ### Looping Controls
-- **Button 5** → Loop In  
-- **Button 6** → Loop Out  
-- **Button 7** → Reloop  
-- **Button 8** → Exit Loop  
+
+- Button 5 → Loop In  
+- Button 6 → Loop Out  
+- Button 7 → Reloop  
+- Button 8 → Exit Loop  
 
 ### Transport Controls
-- **Button 9** → Beat Sync  
-- **Button 10** → Play / Pause  
+
+- Button 9 → Beat Sync  
+- Button 10 → Play / Pause  
 
 ### Crossfader
-- **Trill Touch Bar**
-- Shared across both decks
-- Blends audio between Deck 1 and Deck 2
+
+- Trill Touch Bar  
+- Shared across both decks  
+- Blends audio between Deck 1 and Deck 2  
 
 ---
 
@@ -116,28 +146,34 @@ Effect types are configurable in Mixxx and can be reassigned without changing ha
 
 Several practical challenges emerged during development:
 
-- **Noisy potentiometers** caused unstable MIDI output and were resolved using the `ResponsiveAnalogRead` library.
-- **Jog wheels** could not be fully configured using Mixxx’s Learning Wizard and required manual editing of `.xml` and `.js` files.
-- **PCB footprint errors** required last-minute manual wiring fixes.
-- **Multiple I2C devices** required careful bus management; the Trill Touch Bar library only supports the default I2C bus.
-- **Laser cutting recycled PLA** required extensive testing due to material thickness and behavior.
-- **Jog wheel noise** was caused by incorrect vertical magnet distance rather than radial placement.
+- Noisy potentiometers caused unstable MIDI output and were resolved using the `ResponsiveAnalogRead` library.  
+- Jog wheels could not be fully configured using Mixxx’s Learning Wizard and required manual editing of `.xml` and `.js` files.  
+- PCB footprint errors required last-minute manual wiring fixes.  
+- Multiple I2C devices required careful bus management; the Trill Touch Bar library only supports the default I2C bus.  
+- Laser cutting recycled PLA required extensive testing due to material thickness and behavior.  
+- Jog wheel noise was traced to incorrect **vertical magnet distance**, rather than radial placement.
+
+<p align="center">
+  <img src="Media/enclosure+lazysusan.png" width="450">
+  <br>
+  <em>Laser-cut recycled PLA enclosure with Lazy Susan bearing used for platter rotation.</em>
+</p>
 
 ---
 
 ## References & Documentation
 
 Mixxx MIDI scripting (jog wheels and scratching):  
-https://github.com/mixxxdj/mixxx/wiki/midi%20scripting#Scratching-and-jog-wheels
+https://github.com/mixxxdj/mixxx/wiki/midi%20scripting#Scratching-and-jog-wheels  
 
 Laser cutting PLA reference paper:  
-https://isam2022.hemi-makers.org/wp-content/uploads/sites/3/2022/10/117..pdf
+https://isam2022.hemi-makers.org/wp-content/uploads/sites/3/2022/10/117..pdf  
 
 PLA welding technique:  
-https://all3dp.com/2/pla-welding-how-to-fuse-pla-seams-and-cracks/
+https://all3dp.com/2/pla-welding-how-to-fuse-pla-seams-and-cracks/  
 
 Mixxx DJ software:  
-https://mixxx.org
+https://mixxx.org  
 
 ---
 
