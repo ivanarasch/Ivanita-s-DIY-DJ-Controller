@@ -56,16 +56,18 @@ This repository documents the design and implementation of a two-deck DJ control
 </p>
 
 <p align="center">
+  <img src="Media/PCBSoftware.png" width="600">
+  <br>
+  <em>KiCad PCB layout view showing component placement and routing.</em>
+</p>
+
+<p align="center">
   <img src="Media/PCB.jpg" width="600">
   <br>
   <em>Custom PCB used for sensor and control integration.</em>
 </p>
 
-<p align="center">
-  <img src="Media/PCBSoftware.png" width="600">
-  <br>
-  <em>KiCad PCB layout view showing component placement and routing.</em>
-</p>
+
 
 ---
 
