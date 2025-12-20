@@ -190,4 +190,4 @@ https://youtu.be/EEeUhQ8b_II
 
 Ivana Rasch Chinchilla  
 Music Technology, NYU  
-DIY instruments · embedded systems · DJ technology · creative coding
+
